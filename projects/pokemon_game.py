@@ -11,3 +11,61 @@
 # - Display messages that explain who won or lost a battle
 # - If a Pokemon loses a battle, they lose some of their `hp`
 # - If you call the `feed()` method on a Pokemon, they regain some `hp`
+
+
+from typing import Any
+
+
+class Pokemon:
+
+    allowed_types = ["water","fire","grass"]
+
+    def __init__(self, name, type, max_hp, hp):
+        if type not in self.allowed_types:
+            print(f"{type} is not a valid type. please chose one of the following: {', '.join(self.allowed_types)}")
+            pass
+        else:
+            self.type = type
+        self.name = name
+        self.max_hp = max_hp
+        self.hp = hp    
+
+
+    def battle(self,other):
+
+        if (self.type == "water" and other.type == "fire") or (self.type == "fire" and other.type == "grass") or (self.type == "grass" and other.type == "water"):
+            print("You won")
+            other.hp -= 2
+        elif (self.type == "water" and other.type == "grass") or (self.type == "fire" and other.type == "water") or (self.type == "grass" and other.type == "fire"):
+            print("You lost")
+            self.hp -= 2
+        elif (self.type == "water" and other.type == "water") or (self.type == "fire" and other.type == "fire") or (self.type == "grass" and other.type == "grass"):
+            print("It's a tie")
+            self.hp -= 1
+            other.hp -= 1
+
+    def feed(self,amount = 1):
+        if self.hp >= self.max_hp:
+            print(f"{self.name} health is full")
+        else:
+            temp_hp = self.hp
+            self.hp += amount
+            print(f"{self.name} health is {self.hp}, up from {temp_hp}")
+
+    def __str__(self):
+        return f"Pokemon = {self.name}. Type = {self.type}. Max hp = {self.max_hp}. Hp = {self.hp}"
+
+
+fry = Pokemon("fry","grass",5,5)
+bristine = Pokemon("bristine","fire",5,5)
+
+fry.battle(bristine)
+    
+print(fry)
+
+fry.feed()
+fry.feed(5)
+
+print(fry)
+
+    
