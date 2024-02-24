@@ -20,7 +20,7 @@ class Pokemon:
 
     allowed_types = ["water","fire","grass"]
 
-    def __init__(self, name, type, max_hp, hp):
+    def __init__(self, name:str, type:"water""fire""grass", max_hp, hp):
         if type not in self.allowed_types:
             print(f"{type} is not a valid type. please chose one of the following: {', '.join(self.allowed_types)}")
             pass
@@ -56,16 +56,6 @@ class Pokemon:
         return f"Pokemon = {self.name}. Type = {self.type}. Max hp = {self.max_hp}. Hp = {self.hp}"
 
 
-fry = Pokemon("fry","grass",5,5)
-bristine = Pokemon("bristine","fire",5,5)
 
-fry.battle(bristine)
-    
-print(fry)
-
-fry.feed()
-fry.feed(5)
-
-print(fry)
 
     
