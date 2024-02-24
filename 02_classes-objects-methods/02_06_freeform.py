@@ -20,7 +20,7 @@ class music:
         self.genre = genre
     
     def play(self):
-        print(f"Sweet {self.genre}",end="")
+        print(f"Sweet {self.genre} ",end="")
         for i in range(self.duration):
             print(f"{self.name}","La "*i,end="")
 
